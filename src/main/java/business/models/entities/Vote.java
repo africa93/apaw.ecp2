@@ -1,3 +1,5 @@
+package business.models.entities;
+
 public class Vote {
 
     private int id;
@@ -26,5 +28,5 @@ public class Vote {
     public Theme getTheme() {
         return theme;
     }
-
+    
 }

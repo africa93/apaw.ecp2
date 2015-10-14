@@ -1,4 +1,10 @@
-package es.upm.miw.pd.voting;
+package server;
+
+import presentation.frontController.FrontController;
+import voting.http.HttpMethod;
+import voting.http.HttpRequest;
+import voting.http.HttpResponse;
+import voting.http.HttpStatus;
 
 public class Server {
 

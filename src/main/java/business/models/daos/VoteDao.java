@@ -1,5 +1,7 @@
 package business.models.daos;
 
-public class VoteDao {
+import business.models.entities.*;
+
+public interface VoteDao extends GenericDao<Vote, Integer>{
 
 }

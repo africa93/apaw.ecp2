@@ -2,7 +2,6 @@ package presentation.models;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class Model {
 
     private Map<String, Object> map = new HashMap<>();
