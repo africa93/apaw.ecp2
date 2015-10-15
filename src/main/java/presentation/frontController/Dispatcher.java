@@ -42,7 +42,7 @@ public class Dispatcher {
         case "VotingPresenter":
             VotingPresenter votingPresenter = new VotingPresenter();
             if ("voteTheme".equals(action)) {
-                nextView = votingPresenter.vote(model);
+                nextView = votingPresenter.voteTheme(model);
             } else {
                 model.put("error", "Acción no permitida: " + action);
             }

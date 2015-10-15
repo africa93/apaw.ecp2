@@ -12,7 +12,7 @@ public class ThemeManagerPresenter {
     
     public String createTheme(Model model, String name){
         model.put(name, Double.NaN);
-        //Mostrar lo que tiene el modelo?
+        //Método que cree un tema con el nombre que se le pasa
         new BusinessController().createTheme(new TransferObject2());
         return "ThemeManagerView";
     }
