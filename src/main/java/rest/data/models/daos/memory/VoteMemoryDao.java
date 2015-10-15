@@ -18,7 +18,7 @@ public class VoteMemoryDao extends GenericMemoryDao<Vote, Integer> implements Vo
         return entity.getId();
     }
 
-    //@Override
+    @Override
     public List<Vote> findByTheme(Theme theme) {
         List<Vote> votes = new ArrayList<>();
         List<Vote> votesAll = this.findAll();

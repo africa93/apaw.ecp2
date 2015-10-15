@@ -10,8 +10,8 @@ public class ThemeManagerView implements View {
         System.out.println("Theme Manager Page");
         List<String> themes = (List<String>) model.get("themes");
         System.out.print("Temas: [ ");
-        for(int i=0; i<themes.size(); i++){
-            System.out.print(themes.get(i)+" ");
+        for (int i = 0; i < themes.size(); i++) {
+            System.out.print(themes.get(i) + " ");
         }
         System.out.print("] \n");
     }

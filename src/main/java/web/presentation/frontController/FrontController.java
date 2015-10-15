@@ -13,7 +13,7 @@ public class FrontController {
     public void doGet(HttpRequest request, HttpResponse response) {
         dispatcher.doGet(request, response);
     }
-    
+
     public void doPost(HttpRequest request, HttpResponse response) {
         dispatcher.doPost(request, response);
     }

@@ -28,5 +28,5 @@ public class Vote {
     public Theme getTheme() {
         return theme;
     }
-    
+
 }

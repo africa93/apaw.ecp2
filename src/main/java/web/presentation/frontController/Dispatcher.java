@@ -10,14 +10,13 @@ import web.presentation.views.ThemeManagerView;
 import web.presentation.views.View;
 import web.presentation.views.VotingView;
 
-
 public class Dispatcher {
-    
-    public void doGet(HttpRequest request, HttpResponse response){
+
+    public void doGet(HttpRequest request, HttpResponse response) {
         Model model = new Model();
         String presenter = request.getPath() + "Presenter";
         String nextView = request.getPath() + "View";
-        switch(presenter){
+        switch (presenter) {
         case "VotingPresenter":
             VotingPresenter votingPresenter = new VotingPresenter();
             model.put("votes", votingPresenter.process());
@@ -29,8 +28,8 @@ public class Dispatcher {
         }
         this.show(nextView, model);
     }
-    
-    public void doPost(HttpRequest request, HttpResponse response){
+
+    public void doPost(HttpRequest request, HttpResponse response) {
         String controller = request.getPath() + "Presenter";
         String action = request.getParams().get("action");
         String themeName = request.getParams().get("themeName");
@@ -64,7 +63,7 @@ public class Dispatcher {
         }
         this.show(nextView, model);
     }
-    
+
     private void show(String nextView, Model model) {
         View view;
         switch (nextView) {

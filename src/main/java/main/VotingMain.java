@@ -1,4 +1,3 @@
-
 package main;
 
 import rest.data.models.daos.DaoFactory;
@@ -12,39 +11,38 @@ public class VotingMain {
     public VotingMain() {
     }
 
-    public void voting(){
+    public void voting() {
         HttpRequest request = new HttpRequest("LocalHost", "Voting", HttpMethod.GET);
         System.out.println(request.toString() + "\n");
-        
+
         new Client().send(request);
     }
-    
+
     public void votingVoteTheme(String themeName, int value) {
         HttpRequest request = new HttpRequest("LocalHost", "Voting", HttpMethod.POST);
         request.addQueryParam("action", "voteTheme");
         request.addQueryParam("themeName", themeName);
         request.addQueryParam("value", "" + value);
         System.out.println(request.toString() + "\n");
-        
+
         new Client().send(request);
     }
 
-    public void themeManager(){
+    public void themeManager() {
         HttpRequest request = new HttpRequest("LocalHost", "ThemeManager", HttpMethod.GET);
         System.out.println(request.toString() + "\n");
-        
+
         new Client().send(request);
     }
-    
-    public void themeManagerCreateTheme(String themeName){
+
+    public void themeManagerCreateTheme(String themeName) {
         HttpRequest request = new HttpRequest("LocalHost", "ThemeManager", HttpMethod.POST);
         request.addQueryParam("action", "createTheme");
         request.addQueryParam("themeName", themeName);
         System.out.println(request.toString() + "\n");
-        
+
         new Client().send(request);
     }
-    
 
     public static void main(String[] args) {
         DaoFactory.setFactory(new DaoFactoryMemory());

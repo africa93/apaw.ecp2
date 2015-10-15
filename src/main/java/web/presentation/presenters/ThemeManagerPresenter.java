@@ -13,7 +13,6 @@ public class ThemeManagerPresenter {
     }
 
     public void createTheme(Model model) {
-        // Método que cree un tema con el nombre que se le pasa
         new BusinessController().createTheme((String) model.get("themeName"));
     }
 }
