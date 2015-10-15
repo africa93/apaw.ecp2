@@ -1,10 +1,10 @@
 package server;
 
-import presentation.frontController.FrontController;
 import voting.http.HttpMethod;
 import voting.http.HttpRequest;
 import voting.http.HttpResponse;
 import voting.http.HttpStatus;
+import web.presentation.frontController.FrontController;
 
 public class Server {
 

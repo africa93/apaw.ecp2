@@ -1,8 +1,8 @@
 
 package main;
 
-import business.models.daos.DaoFactory;
-import business.models.daos.memory.DaoFactoryMemory;
+import rest.data.models.daos.DaoFactory;
+import rest.data.models.daos.memory.DaoFactoryMemory;
 import client.Client;
 import voting.http.HttpMethod;
 import voting.http.HttpRequest;
