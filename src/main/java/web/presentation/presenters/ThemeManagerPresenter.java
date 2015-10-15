@@ -6,27 +6,14 @@ import rest.business.controllers.BusinessController;
 import web.presentation.models.Model;
 
 public class ThemeManagerPresenter {
-    
-    private String themeName;
-    
-    public ThemeManagerPresenter(String name){
-        this.themeName = name;
-    }
-    
-    public ThemeManagerPresenter(){
-        this.themeName = "";
-    }
-    
-    public String process(Model model){
+
+    public List<String> process() {
         List<String> themes = new BusinessController().getThemes();
-        model.put("themes", themes);
-        return "ThemeManagerView";
+        return themes;
     }
-    
-    public String createTheme(Model model){
-        model.put(themeName, Double.NaN);
-        //Método que cree un tema con el nombre que se le pasa
-        new BusinessController().createTheme(themeName);
-        return "ThemeManagerView";
+
+    public void createTheme(Model model) {
+        // Método que cree un tema con el nombre que se le pasa
+        new BusinessController().createTheme((String) model.get("themeName"));
     }
 }

@@ -25,7 +25,7 @@ public class Dispatcher {
             break;
         case "ThemeManagerPresenter":
             ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter();
-            nextView = themeManagerPresenter.process(model);
+            model.put("themes", themeManagerPresenter.process());
             break;
         }
         this.show(nextView, model);
@@ -48,10 +48,11 @@ public class Dispatcher {
             }
             break;
         case "ThemeManagerPresenter":
-            ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter(themeName);
+            model.put("themeName", themeName);
+            ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter();
             if ("createTheme".equals(action)) {
-                // TODO uI2Presenter.setters((request.getParams().get("param")));
-                nextView = themeManagerPresenter.createTheme(model);
+                themeManagerPresenter.createTheme(model);
+                model.put("themes", themeManagerPresenter.process());
             } else {
                 model.put("error", "Acción no permitida: " + action);
             }
