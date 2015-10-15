@@ -18,7 +18,7 @@ public class ThemeMemoryDao extends GenericMemoryDao<Theme, Integer> implements 
         return entity.getId();
     }
 
-    //@Override
+    @Override
     public Theme findByName(String themeName) {
         for (Theme theme : this.findAll()) {
             if (themeName.equals(theme.getName())) {
@@ -28,7 +28,7 @@ public class ThemeMemoryDao extends GenericMemoryDao<Theme, Integer> implements 
         return null;
     }
 
-    //@Override
+    @Override
     public List<String> findAllNames() {
         ArrayList<String> nameList = new ArrayList<>();
         for (Theme theme : this.findAll()) {

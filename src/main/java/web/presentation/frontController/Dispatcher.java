@@ -13,9 +13,8 @@ import web.presentation.views.VotingView;
 
 public class Dispatcher {
     
-    Model model = new Model();
-    
     public void doGet(HttpRequest request, HttpResponse response){
+        Model model = new Model();
         String presenter = request.getPath() + "Presenter";
         String nextView = request.getPath() + "View";
         
@@ -35,23 +34,24 @@ public class Dispatcher {
     public void doPost(HttpRequest request, HttpResponse response){
         String controller = request.getPath() + "Presenter";
         String action = request.getParams().get("action");
-        String name = request.getParams().get("themeName");
+        String themeName = request.getParams().get("themeName");
         String nextView = request.getPath() + "View";
+        Model model = new Model();
 
         switch (controller) {
         case "VotingPresenter":
-            VotingPresenter votingPresenter = new VotingPresenter();
-            if ("voteTheme".equals(action)) {
+            String vote = request.getParams().get("voteTheme");
+            VotingPresenter votingPresenter = new VotingPresenter(themeName, Integer.parseInt(vote));          if ("voteTheme".equals(action)) {
                 nextView = votingPresenter.voteTheme(model);
             } else {
                 model.put("error", "Acción no permitida: " + action);
             }
             break;
         case "ThemeManagerPresenter":
-            ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter();
+            ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter(themeName);
             if ("createTheme".equals(action)) {
                 // TODO uI2Presenter.setters((request.getParams().get("param")));
-                nextView = themeManagerPresenter.createTheme(model,name);
+                nextView = themeManagerPresenter.createTheme(model);
             } else {
                 model.put("error", "Acción no permitida: " + action);
             }
