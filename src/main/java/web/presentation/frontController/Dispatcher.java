@@ -17,11 +17,10 @@ public class Dispatcher {
         Model model = new Model();
         String presenter = request.getPath() + "Presenter";
         String nextView = request.getPath() + "View";
-        
         switch(presenter){
         case "VotingPresenter":
             VotingPresenter votingPresenter = new VotingPresenter();
-            nextView = votingPresenter.process(model);
+            model.put("votes", votingPresenter.process());
             break;
         case "ThemeManagerPresenter":
             ThemeManagerPresenter themeManagerPresenter = new ThemeManagerPresenter();
@@ -40,9 +39,14 @@ public class Dispatcher {
 
         switch (controller) {
         case "VotingPresenter":
-            String vote = request.getParams().get("voteTheme");
-            VotingPresenter votingPresenter = new VotingPresenter(themeName, Integer.parseInt(vote));          if ("voteTheme".equals(action)) {
-                nextView = votingPresenter.voteTheme(model);
+            String vote = request.getParams().get("value");
+            int voteValue = Integer.parseInt(vote);
+            VotingPresenter votingPresenter = new VotingPresenter();
+            if ("voteTheme".equals(action)) {
+                model.put("themeName", themeName);
+                model.put("vote", voteValue);
+                votingPresenter.voteTheme(model);
+                model.put("votes", votingPresenter.process());
             } else {
                 model.put("error", "Acción no permitida: " + action);
             }

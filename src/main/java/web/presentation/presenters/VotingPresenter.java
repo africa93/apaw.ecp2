@@ -1,35 +1,31 @@
 package web.presentation.presenters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rest.business.controllers.BusinessController;
+import rest.business.views.ThemeAverageTransfer;
 import rest.business.views.VoteTransfer;
 import web.presentation.models.Model;
 
 public class VotingPresenter {
-    private String themeName;
-    private int vote;
     
-    public VotingPresenter(){
-        themeName="";
-        vote = 0;
-    }
-    
-    public VotingPresenter(String themeName, int vote){
-        this.themeName = themeName;
-        this.vote = vote;
-    }
     //Mostrar votaciones
-    public String process(Model model){
-        model.put("log", "VotingPresenter:process");
+    public List<String> process(){
+        List<ThemeAverageTransfer> themeAverages = new BusinessController().getAverages();
+        List<String> averagesList = new ArrayList<>();
+        for(int i=0; i<themeAverages.size(); i++){
+            averagesList.add("[themeName="+themeAverages.get(i).getThemeName()+", average="+themeAverages.get(i).getAverage()+"]");
+        }
+        return averagesList;
         //Necesito que se devuelva un array con nombre de tema y su media
         //Media de votaciones();
-        return "VotingView";
+        
     }
     
     //Acción de votar
-    public String voteTheme(Model model){
-        model.put("log", "VotingPresenter:vote");
-        //crear un metodo en la clase de negocio al que le pase un voto
-        new BusinessController().voteTheme(new VoteTransfer(themeName, vote));
-        return "VotingView";
+    public void voteTheme(Model model){
+        new BusinessController().voteTheme(new VoteTransfer((String)model.get("themeName"),(int)model.get("vote")));
+        
     }
 }
